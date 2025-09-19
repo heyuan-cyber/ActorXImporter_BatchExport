@@ -13,6 +13,6 @@
     			---etc
     			---specialskill
     			---superarts 
-    将在attack/.../superarts 中生成FBX文件夹，存放生成的FBX文件
+    选中animation文件夹或者0xx_xx,将在attack/.../superarts 中生成FBX文件夹，存放生成的FBX文件
     3.命名
     	prefix.txt - 给生成的fbx文件加个前缀如SM6_Ken_，便于区分
