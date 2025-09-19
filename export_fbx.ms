@@ -363,8 +363,8 @@ fn ProcessPSAFolder dir prefix =
 )
 fn GetPrefixFromTxt =
 (
-    local scriptDir = getFilenamePath getSourceFileName() -- 脚本所在目录
-    local prefixFile = scriptDir + "prefix.txt"
+    local scriptDir = "D:\softwares\ExportToolForREEngine\StreetFighter6Extract\ActorXImporter_BatchExport\prefix.txt"
+    local prefixFile = scriptDir
     local prefix = ""
 
     if doesFileExist prefixFile then
