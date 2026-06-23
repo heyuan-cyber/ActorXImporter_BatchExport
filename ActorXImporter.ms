@@ -223,14 +223,11 @@ global g_reorientBones
 global g_dontConjugateRoot
 global Anims					-- array of AnimInfoBinary
 
--- 先加载导出函数脚本
 fn loadExportScript =
 (
     local currentScriptPath = getFilenamePath (getSourceFileName())
     fileIn (currentScriptPath + "export_fbx.ms")
 )
-
-loadExportScript()
 -------------------------------------------------------------------------------
 --	Default settings
 -------------------------------------------------------------------------------
@@ -2025,6 +2022,9 @@ fn ImportPsaFile filename trackNum all:false =
 	gc()
 )
 
+-- Load export script after dependencies exist: FindAllBones, ClearMaxScene, ImportPskFile, ImportPsaFile
+loadExportScript()
+
 
 -------------------------------------------------------------------------------
 --	User interface
@@ -2235,7 +2235,7 @@ rollout axToolsRollout "[ 工具 ]"
 	on BtnRestoreBindpose pressed do RestoreBindpose()
 	on BtnRemoveAnimation pressed do RemoveAnimation()
 	on BtnClearScene      pressed do ClearMaxScene()
-	on BtnBatchExport     pressed do fileIn "export_fbx.ms"
+	on BtnBatchExport     pressed do loadExportScript()
 	on BtnReloadScript    pressed do
 	(
 		if getSourceFileName != undefined then	-- checking Max version (Max9+) ...

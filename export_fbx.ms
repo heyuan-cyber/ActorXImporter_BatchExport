@@ -319,7 +319,9 @@ fn ProcessPSAFolder dir prefix =
             (
                 local track = Anims[i]
                 local safeName = track.Name
-                local filename = baseDir + prefix + getFilenameFile(AnimFileName) + "_" + safeName
+                local psaBase = getFilenameFile AnimFileName
+                local baseName = if (safeName == psaBase) then safeName else (psaBase + "_" + safeName)
+                local filename = baseDir + prefix + baseName
 
                 format "Exporting animation % -> %\n" track.Name filename
 
@@ -375,10 +377,6 @@ fn GetPrefixFromTxt =
             prefix = trimRight (readLine f) -- 读第一行并去掉末尾空格
             close f
         )
-    )
-    else
-    (
-        messageBox ("未找到前缀文件: " + prefixFile + "\n将使用空前缀")
     )
     return prefix
 )
